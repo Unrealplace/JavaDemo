@@ -24,6 +24,33 @@ public class Employee {
         String theBir = new String(brith+"0000");
         this.birthDay = theBir;
     }
+    public boolean equals(Object otherObject){
+        if (this == otherObject)return true;
+        if (otherObject == null)return false;
+        if (this.getClass() != otherObject.getClass())return false;
+
+        Employee  other = (Employee)otherObject;
+        return name.equals(other.name) && salary==other.salary;
+
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName()
+                +"[name="+name
+                +",salary="+salary
+                +"]";
+    }
+
+    @Override
+    public int hashCode() {
+        return 7*name.hashCode()
+                +11*new Double(salary).hashCode();
+    }
+
+    public Employee getMySelf(){
+        return this;
+    }
 
     public void setSalary(double salary) {
         this.salary = salary;
