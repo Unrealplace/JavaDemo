@@ -32,24 +32,32 @@ public  class Main {
             e.printStackTrace();
         }
 
-        //回调
-//        ActionListener listener = (ActionListener) new TimePrinter();
 
-        try {
-//            Timer  t = new Timer(10000,listener);
-//            t.start();
-//            JOptionPane.showMessageDialog(null,"qiut program");
-
-        }catch (Exception e){
-            System.out.print(e);
-
-        }
-
+        /**
+         * 测试回调的使用
+         */
         PeopleLi li = new PeopleLi();
-
         PeopleWang wang = new PeopleWang(li);
-
         wang.askQuestion("1+1=?");
+
+
+        /**
+         * 测试内部类的使用,下面这种用法前提是TimPriter要是公有类
+         */
+
+        TalkIngClock clock2 = new TalkIngClock(1000,false);
+        TalkIngClock.TimePrinter listenner = clock2.new TimePrinter();
+        listenner.setInnerTime(9999);
+        System.out.print(listenner.getInnerTime());
+
+
+
+        TalkIngClock clock = new TalkIngClock(1000,true);
+        clock.start();
+        JOptionPane.showMessageDialog(null,"quit program?");
+        System.exit(0);
+
+
 
 
 
